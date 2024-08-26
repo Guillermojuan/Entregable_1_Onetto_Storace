@@ -8,7 +8,6 @@ df = pd.read_csv('Entregable_1_Onetto_Storace\JEOPARDY_CSV.csv', encoding='latin
 #El juego debe sortear 5 preguntas al azar de las 20 posibles, mostrarle al usuario cada pregunta con sus opciones, 
 #y si el usuario acierta suma 10 puntos. Al finalizar, el juego le informa al usuario su puntaje.
 
-# Generador de preguntas
 def generador_preguntas(df: pd.DataFrame) -> Generator[dict, None, None]:
     while True:
         preguntas_seleccionadas = df.sample(n=5)
@@ -37,13 +36,25 @@ def manejar_puntaje(func):
         return puntaje
     return wrapper
 
+# Verificador de respuestas válidas
+def verificar_respuesta() -> int:
+    while True:
+        respuesta_usuario = input("Seleccione la opción correcta (1, 2 o 3): ")
+        if respuesta_usuario in ['1', '2', '3']:
+            return int(respuesta_usuario) - 1  # Restamos 1 para adaptarlo a los índices (0, 1, 2)
+        else:
+            print("Entrada inválida. Por favor, ingrese 1, 2 o 3.")
+
 # Función principal del juego
 @manejar_puntaje
 def jugar(pregunta_info: dict) -> bool:
     print(f"Pregunta: {pregunta_info['pregunta']}")
     for i, opcion in enumerate(pregunta_info['opciones'], 1):
         print(f"{i}. {opcion}")
-    respuesta_usuario = int(input("Seleccione la opción correcta (1, 2 o 3): ")) - 1
+    
+    # Verificamos que la entrada sea válida (1, 2 o 3)
+    respuesta_usuario = verificar_respuesta()
+    
     return pregunta_info['opciones'][respuesta_usuario] == pregunta_info['respuesta_correcta']
 
 # Recursión para continuar el juego
