@@ -5,7 +5,10 @@ import pandas as pd
 import random
 from typing import List, Generator
 
-# Puntaje global
+
+# PARTE IMPORTANTE PARA CORRER EL PROGRAMA, ES IMPORTANTE QUE EN LA LINEA 23 SE COLOQUE LA RUTA DEL ARCHIVO CSV, EN LA , EN LA LINEA 149 Y 168 LA IMAGEN QUE DICE TRIVIA FOTO
+
+# Puntaje final
 puntaje_final = 0
 
 # Función para centrar la ventana en la pantalla
@@ -17,7 +20,7 @@ def centrar_ventana(ventana, ancho, alto):
     ventana.geometry(f"{ancho}x{alto}+{x}+{y}")
 
 # Leo el CSV con la librería pandas y creamos un DataFrame con la información del archivo
-df = pd.read_csv('C:/Users/lucas/OneDrive/Escritorio/JEOPARDY_CSV (1).csv', encoding='latin1')
+df = pd.read_csv('JEOPARDY_CSV.csv', encoding='latin1') # Importante poner la ruta del archivo correcta
 
 # Generador de preguntas aleatorias
 def generador_preguntas(df: pd.DataFrame) -> Generator[dict, None, None]:
@@ -145,7 +148,7 @@ pantalla_inicio = tk.Frame(ventana, bg="#2F2F2F")
 pantalla_inicio.pack(expand=True, fill="both")
 
 # Cargar la imagen de fondo para la pantalla de inicio
-imagen_fondo_inicio = Image.open("C:/Users/lucas/OneDrive/Escritorio/trivia foto 1.jpg")
+imagen_fondo_inicio = Image.open("trivia foto 1.jpg")
 imagen_fondo_inicio = ImageTk.PhotoImage(imagen_fondo_inicio)
 
 # Crear un label para mostrar la imagen de fondo en la pantalla de inicio
@@ -164,7 +167,7 @@ boton_jugar.place(relx=0.5, rely=0.5, anchor="center")
 frame = tk.Frame(ventana, bg="#2F2F2F")
 
 # Cargar la imagen de fondo para el juego
-imagen_fondo = Image.open("C:/Users/lucas/OneDrive/Escritorio/trivia foto 1.jpg")
+imagen_fondo = Image.open("trivia foto 1.jpg")
 imagen_fondo = ImageTk.PhotoImage(imagen_fondo)
 
 # Crear un label para mostrar la imagen de fondo en el juego
