@@ -1,15 +1,5 @@
 from typing import List, Generator
-from functools import wraps
-from readerDeDatos import df, generador_preguntas
-
-# Decorador
-def numeradorPregunta(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        numero_pregunta = kwargs.get('numero_pregunta', 1)  # Obtener el número de pregunta o usar 1 por defecto
-        print(f"Respondiendo pregunta {numero_pregunta}:")
-        return func(*args, **kwargs)
-    return wrapper
+from decorador import numeradorPregunta
 
 # Funcion Lambda
 verificar_respuesta = lambda entrada: entrada in ['1', '2', '3']
