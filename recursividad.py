@@ -11,6 +11,6 @@ def correr_juego():
     if respuesta.is_right() and respuesta.value == 's':
         correr_juego()
     elif respuesta.is_left() and respuesta.value == "Timeout":
-        print("Demoraste mas de 5 seg. Si querias volver a jugar se mas rapido.")
+        print("Demoraste mas de 5 seg. Si querias volver a jugar, sé mas rapido.")
     else:
         print("Gracias por jugar.")
