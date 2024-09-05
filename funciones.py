@@ -23,6 +23,8 @@ def jugar(pregunta_info: dict, numero_pregunta: int = 1) -> bool:
         return True
     else:
         print(f"Respuesta incorrecta. La respuesta correcta era: {pregunta_info['respuesta_correcta']}\n")
+        return False  # Agrega esta línea para devolver False cuando la respuesta es incorrecta.
+
         
 
 
